@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  tvcalib:
+    image: tvcalib:dev   # build this image with your Dockerfile
+    container_name: tvcalib_dev
+    build:
+      context: .         # assumes Dockerfile is in repo root
+      dockerfile: Dockerfile
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - .:/workspace               # mount local tvcalib repo
+      - /home/local_nfs_1:/home/local_nfs_1
+      - /home/local_nfs_2:/home/local_nfs_2
+    working_dir: /workspace
+    ports:
+      - "8888:8888"                # Jupyter / dev server if needed
+    tty: true
+    stdin_open: true
+    command: bash
