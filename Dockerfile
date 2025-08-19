@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
        python3.9 python3.9-distutils python3.9-venv python3.9-dev curl git \
     && curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9 \
     && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN apt update && apt upgrade && apt install tmux ffmpeg neovim nano python-is-python3
 
