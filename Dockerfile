@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get upgrade && apt-get install tmux ffmpeg neovim nano python-is-python3
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install tmux ffmpeg neovim nano python-is-python3
 
 RUN python3 -m pip install --no-cache-dir \
     torch==1.11.0+cu113 torchvision==0.12.0+cu113 \
